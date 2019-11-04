@@ -53,3 +53,16 @@ debian@beaglebone:~$ ip addr
 2: wpan0: <BROADCAST,NOARP> mtu 123 qdisc noop state DOWN group default qlen 300
     link/ieee802.15.4 0a:8e:e6:5c:04:1b:d2:28 brd ff:ff:ff:ff:ff:ff:ff:ff
 ```
+
+Configure the device according to your desired parameters
+
+```
+sudo ip link set wpan0 down
+sudo iwpan phy0 set channel 0 13
+sudo iwpan dev wpan0 set pan_id 0xcafe
+sudo ip link add link wpan0 name lowpan0 type lowpan
+sudo ip link set wpan0 up
+sudo ip link set lowpan0 up
+```
+
+You should now be able to ping your device from another node (RIOT-OS, for instance).
