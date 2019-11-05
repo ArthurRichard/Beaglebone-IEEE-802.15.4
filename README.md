@@ -65,4 +65,23 @@ sudo ip link set wpan0 up
 sudo ip link set lowpan0 up
 ```
 
-You should now be able to ping your device from another node (RIOT-OS, for instance).
+You should now be able to ping your device from another node (*riot-os*, for instance).
+
+## riot-os
+
+Using the nanocoap_server example: 
+
+https://github.com/RIOT-OS/RIOT/tree/master/examples/nanocoap_server
+
+you can share and access data using the CoAP protocol over 6LoWPAN.
+
+```
+debian@beaglebone:~$ coap-client -a fe80::5488:fc06:424f:84c6%lowpan0  -m get coap://[fe80::7b7c:d27:84f3:fcba]/riot/ver
+v:1 t:CON c:GET i:e2ae {} [ ]
+This is RIOT (Vev:1 t:CON c:GET i:e2af {} [ ]
+rsion: 2019.07) v:1 t:CON c:GET i:e2b0 {} [ ]
+running on a samv:1 t:CON c:GET i:e2b1 {} [ ]
+r21-xpro board wv:1 t:CON c:GET i:e2b2 {} [ ]
+ith a samd21 MCUv:1 t:CON c:GET i:e2b3 {} [ ]
+.
+```
